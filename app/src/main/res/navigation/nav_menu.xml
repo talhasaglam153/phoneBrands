@@ -3,11 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_menu"
-    app:startDestination="@id/phoneBrandsFragment">
-
+    app:startDestination="@id/phoneBrandsListFragment">
+    <fragment
+        android:id="@+id/phoneBrandsListFragment"
+        android:name="com.tcoding.phonebrands.ui.fragments.PhoneBrandsListFragment"
+        android:label="fragment_phone_brands_list"
+        tools:layout="@layout/fragment_phone_brands_list" >
+        <action
+            android:id="@+id/action_phoneBrandsListFragment_to_phoneBrandsFragment"
+            app:destination="@id/phoneBrandsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/phoneBrandsFragment"
         android:name="com.tcoding.phonebrands.ui.fragments.PhoneBrandsFragment"
         android:label="fragment_phone_brands"
-        tools:layout="@layout/fragment_phone_brands" />
+        tools:layout="@layout/fragment_phone_brands" >
+        <argument
+            android:name="phoneData"
+            app:argType="com.tcoding.phonebrands.model.Data" />
+        <action
+            android:id="@+id/action_phoneBrandsFragment_to_phoneBrandsListFragment"
+            app:destination="@id/phoneBrandsListFragment" />
+    </fragment>
 </navigation>
