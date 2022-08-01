@@ -24,5 +24,17 @@
         <action
             android:id="@+id/action_phoneBrandsFragment_to_phoneBrandsListFragment"
             app:destination="@id/phoneBrandsListFragment" />
+        <action
+            android:id="@+id/action_phoneBrandsFragment_to_phoneFeatureFragment"
+            app:destination="@id/phoneFeatureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneFeatureFragment"
+        android:name="com.tcoding.phonebrands.ui.fragments.PhoneFeatureFragment"
+        android:label="fragment_phone_feature"
+        tools:layout="@layout/fragment_phone_feature" >
+        <argument
+            android:name="phoneX"
+            app:argType="com.tcoding.phonebrands.model.PhoneX" />
     </fragment>
 </navigation>

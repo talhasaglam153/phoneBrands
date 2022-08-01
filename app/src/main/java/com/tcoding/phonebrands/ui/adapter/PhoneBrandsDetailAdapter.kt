@@ -11,7 +11,7 @@ import com.tcoding.phonebrands.R
 import com.tcoding.phonebrands.model.Phone
 import com.tcoding.phonebrands.model.PhoneX
 
-class PhoneBrandsDetailAdapter: RecyclerView.Adapter<PhoneBrandsDetailAdapter.DetailViewHolder>() {
+class PhoneBrandsDetailAdapter(var itemClick:((position:Int)->Unit)?): RecyclerView.Adapter<PhoneBrandsDetailAdapter.DetailViewHolder>() {
 
     var phoneDetailList = ArrayList<PhoneX>()
 
@@ -27,7 +27,7 @@ class PhoneBrandsDetailAdapter: RecyclerView.Adapter<PhoneBrandsDetailAdapter.De
 
 
 
-    class DetailViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class DetailViewHolder(itemView: View,itemClick: ((position: Int) -> Unit)?): RecyclerView.ViewHolder(itemView) {
 
         var tvPhoneName: TextView
         var ivPhoneDetailImage: ImageView
@@ -35,6 +35,10 @@ class PhoneBrandsDetailAdapter: RecyclerView.Adapter<PhoneBrandsDetailAdapter.De
         init {
             tvPhoneName = itemView.findViewById(R.id.tvPhoneName)
             ivPhoneDetailImage = itemView.findViewById(R.id.ivPhoneDetailImage)
+
+            itemView.setOnClickListener {
+                itemClick!!(adapterPosition)
+            }
         }
 
         fun bindData(phoneX: PhoneX) {
@@ -50,7 +54,7 @@ class PhoneBrandsDetailAdapter: RecyclerView.Adapter<PhoneBrandsDetailAdapter.De
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_phone_detail_row, parent, false)
-        return DetailViewHolder(view)
+        return DetailViewHolder(view, itemClick)
     }
 
     override fun onBindViewHolder(holder: DetailViewHolder, position: Int) {
