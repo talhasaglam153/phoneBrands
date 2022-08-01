@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_menu"
-    app:startDestination="@id/phoneBrandsListFragment">
+    app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/phoneBrandsListFragment"
         android:name="com.tcoding.phonebrands.ui.fragments.PhoneBrandsListFragment"
@@ -36,5 +36,15 @@
         <argument
             android:name="phoneX"
             app:argType="com.tcoding.phonebrands.model.PhoneX" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.tcoding.phonebrands.ui.fragments.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_phoneBrandsListFragment"
+            app:destination="@id/phoneBrandsListFragment"
+            app:popUpTo="@id/nav_menu" />
     </fragment>
 </navigation>
